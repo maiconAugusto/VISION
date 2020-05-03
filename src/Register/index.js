@@ -74,7 +74,7 @@ export default function ({ navigation }) {
           validate = false;
           Alert.alert(
             'Atenção',
-            'Este e-mail já está cadastrado neste dispositivo'
+            'Este e-mail já está cadastrado neste dispositivo!'
           );
         }
       });
