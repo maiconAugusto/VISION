@@ -63,7 +63,7 @@ export default function ({ navigation }) {
 
   async function createUser() {
     try {
-      if (name === '' || email === '' || password === '') {
+      if (name === '' || email === '' || password === '' || avatar === '') {
         AlertUser();
         return;
       }
@@ -138,6 +138,7 @@ export default function ({ navigation }) {
             keyboardType="default"
             autoCapitalize={false}
             onChangeText={(text) => setName(text)}
+            maxLength={28}
           />
           <Input
             placeholder="E-mail"

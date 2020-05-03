@@ -10,8 +10,8 @@ export default function ({ navigation }) {
   const [name, setName] = useState('');
   useEffect(() => {
     async function getData() {
-      const id = await AsyncStorage.getItem('@id');
-      const response = RealmBD.objects('User').filtered(`id = "${id}"`);
+      const email = await AsyncStorage.getItem('@email');
+      const response = RealmBD.objects('User').filtered(`email = "${email}"`);
       setName(response[0].name);
       setAvatar(response[0].avatar);
     }

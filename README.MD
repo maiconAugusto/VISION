@@ -9,3 +9,7 @@
 #### Acesso ao APP
 
 - Para ter acesso ao app, é necessário criar um conta, cadastre-se, é bem simples, todos os campos deve ser informado, avatar, nome, e-mail e senha, depois disso é só fazer o login.
+
+#### APK para instalar do device 
+
+- <project>\android\app\release

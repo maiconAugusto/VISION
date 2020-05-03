@@ -118,10 +118,8 @@ export default class Feed extends React.Component {
   }
 
   async getDataUser() {
-    const _id = await AsyncStorage.getItem('@id');
-    const response = RealmBD.objects('User').filtered(
-      `id = "${parseInt(_id)}"`
-    );
+    const email = await AsyncStorage.getItem('@email');
+    const response = RealmBD.objects('User').filtered(`email = "${email}"`);
     const { name, avatar, id } = response[0];
     this.setState({ name, avatar, id });
   }

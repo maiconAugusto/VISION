@@ -9,6 +9,7 @@ export const TextName = styled.Text`
   margin-top: 10px;
   color: white;
   font-weight: bold;
+  margin: 10px;
 `
 export const TextInfo = styled.Text`
   color: #F7F7F7;
