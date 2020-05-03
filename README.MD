@@ -12,4 +12,4 @@
 
 #### APK para instalar no device 
 
-- project\android\app\release
+- nomeProjeto\android\app\release
