@@ -2,7 +2,7 @@
 #### VISION APP
 
 - 1º Clone o respositório.
-- 2º cd <nomeProjeto>.
+- 2º cd nomeProjeto.
 - 3º Rode o comando yarn para instalar as dependências.
 - 4º Rode npx react-native run-android para rodar o projeto.
 
@@ -12,4 +12,4 @@
 
 #### APK para instalar no device 
 
-- <project>\android\app\release
+- project\android\app\release

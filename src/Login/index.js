@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   TouchableOpacity,
   Image,
@@ -7,23 +7,34 @@ import {
   ActivityIndicator,
   Keyboard,
   TouchableWithoutFeedback,
+  Animated,
+  View,
+  StyleSheet,
 } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 import { Container, Box, Buttom, Input, TextButtom } from './style';
 import Logo from '../assets/logo.png';
 import RealmBD from '../services/realmdb/schema';
 
-const DismissKeyboard = ({ children }) => (
-  <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-    {children}
-  </TouchableWithoutFeedback>
-);
-
 export default function ({ navigation }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [disable, setDisable] = useState(false);
+  const [offset] = useState(new Animated.ValueXY({ x: 0, y: 150 }));
+  const [opacity] = useState(new Animated.Value(0));
+
+  useEffect(() => {
+    Animated.spring(offset.y, {
+      toValue: 0,
+      speed: 4,
+      bounciness: 16,
+    }).start();
+    Animated.timing(opacity, {
+      toValue: 1,
+      duration: 200,
+    }).start();
+  }, []);
 
   function Login() {
     if (email === '' || password === '') {
@@ -79,8 +90,20 @@ export default function ({ navigation }) {
   }
 
   return (
-    <DismissKeyboard>
-      <Container>
+    <Container>
+      <Animated.View
+        style={[
+          styles.view,
+          {
+            opacity,
+            transform: [
+              {
+                translateY: offset.y,
+              },
+            ],
+          },
+        ]}
+      >
         <Image style={{ width: '30%', height: '10%' }} source={Logo} />
         <Box>
           <Input
@@ -113,7 +136,14 @@ export default function ({ navigation }) {
         >
           <TextButtom style={{ color: 'white' }}>Cadastre-se</TextButtom>
         </TouchableOpacity>
-      </Container>
-    </DismissKeyboard>
+      </Animated.View>
+    </Container>
   );
 }
+
+const styles = StyleSheet.create({
+  view: {
+    width: '100%',
+    alignItems: 'center',
+  },
+});
